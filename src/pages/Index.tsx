@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Check, ArrowDown, ArrowUp, Calendar, CheckBox, Heart, Leaf, MapPin, Monitor, Phone, Settings, Sprout, Star, Users, Zap } from "lucide-react";
+import { Check, ArrowDown, ArrowUp, Calendar, Heart, Leaf, MapPin, Monitor, Phone, Settings, Sprout, Star, Users, Zap } from "lucide-react";
 
 const Index = () => {
   const [partnerForm, setPartnerForm] = useState({
@@ -19,6 +19,14 @@ const Index = () => {
     location: '',
     type: '',
     message: ''
+  });
+
+  const [signupForm, setSignupForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    plan: ''
   });
 
   const handlePartnerSubmit = (e: React.FormEvent) => {
@@ -35,6 +43,22 @@ const Index = () => {
       type: '',
       message: ''
     });
+  };
+
+  const handleStartGrowing = () => {
+    // Scroll to pricing section
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleBecomePartner = () => {
+    // Scroll to partner section
+    document.getElementById('partners')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleGetStarted = (plan: string) => {
+    console.log('Selected plan:', plan);
+    // Here you would typically redirect to a signup form or open a modal
+    alert(`Starting ${plan} plan signup process...`);
   };
 
   return (
@@ -56,7 +80,10 @@ const Index = () => {
               <a href="#pricing" className="text-gray-700 hover:text-green-600 transition-colors">Pricing</a>
               <a href="#partners" className="text-gray-700 hover:text-green-600 transition-colors">Partners</a>
               <a href="#contact" className="text-gray-700 hover:text-green-600 transition-colors">Contact</a>
-              <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700">
+              <Button 
+                onClick={handleStartGrowing}
+                className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
+              >
                 Get Started
               </Button>
             </div>
@@ -83,10 +110,19 @@ const Index = () => {
               Sustainable, automated, and always fresh.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 px-8 py-4 text-lg">
+              <Button 
+                size="lg" 
+                onClick={handleStartGrowing}
+                className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 px-8 py-4 text-lg"
+              >
                 Start Growing Today
               </Button>
-              <Button size="lg" variant="outline" className="border-green-300 text-green-700 hover:bg-green-50 px-8 py-4 text-lg">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                onClick={handleBecomePartner}
+                className="border-green-300 text-green-700 hover:bg-green-50 px-8 py-4 text-lg"
+              >
                 Become a Partner
               </Button>
             </div>
@@ -215,7 +251,10 @@ const Index = () => {
                     <span>Mobile app access</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700">
+                <Button 
+                  onClick={() => handleGetStarted('Starter')}
+                  className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
+                >
                   Get Started
                 </Button>
               </CardContent>
@@ -258,7 +297,10 @@ const Index = () => {
                     <span>Custom crop requests</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700">
+                <Button 
+                  onClick={() => handleGetStarted('Family')}
+                  className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
+                >
                   Start Free Trial
                 </Button>
               </CardContent>
@@ -296,7 +338,10 @@ const Index = () => {
                     <span>Bulk pricing discounts</span>
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700">
+                <Button 
+                  onClick={() => handleGetStarted('Business')}
+                  className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
+                >
                   Contact Sales
                 </Button>
               </CardContent>
