@@ -549,17 +549,17 @@ const Index = () => {
                 <li><a href="#how-it-works" className="text-gray-400 hover:text-green-400 transition-colors">How It Works</a></li>
                 <li><a href="#pricing" className="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
                 <li><a href="#partners" className="text-gray-400 hover:text-green-400 transition-colors">Partners</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">FAQ</a></li>
+                <li><Link to="/help" className="text-gray-400 hover:text-green-400 transition-colors">FAQ</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-lg font-semibold mb-4">Support</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Help Center</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Contact Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                <li><Link to="/help" className="text-gray-400 hover:text-green-400 transition-colors">Help Center</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-green-400 transition-colors">Contact Us</Link></li>
+                <li><Link to="/privacy" className="text-gray-400 hover:text-green-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-gray-400 hover:text-green-400 transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
