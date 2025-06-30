@@ -18,6 +18,14 @@ const Index = () => {
     navigate('/kiosk-locations');
   };
 
+  const handleInstallKiosk = () => {
+    navigate('/contact');
+  };
+
+  const handleStartSubscription = () => {
+    navigate('/subscription');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <Header />
@@ -155,10 +163,19 @@ const Index = () => {
             Fresh produce, grown locally, consumed responsibly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-50 px-8 py-3">
+            <Button 
+              size="lg" 
+              className="bg-white text-green-600 hover:bg-gray-50 px-8 py-3"
+              onClick={handleInstallKiosk}
+            >
               Install a Kiosk
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-green-700 px-8 py-3">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-green-700 px-8 py-3"
+              onClick={handleStartSubscription}
+            >
               Start Subscription
             </Button>
           </div>
