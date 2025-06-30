@@ -11,6 +11,8 @@ import HelpCenter from "./pages/HelpCenter";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Subscription from "./pages/Subscription";
+import KioskLocations from "./pages/KioskLocations";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 
@@ -28,6 +30,16 @@ const App = () => (
             <Route path="/" element={
               <ProtectedRoute>
                 <Index />
+              </ProtectedRoute>
+            } />
+            <Route path="/subscription" element={
+              <ProtectedRoute>
+                <Subscription />
+              </ProtectedRoute>
+            } />
+            <Route path="/kiosk-locations" element={
+              <ProtectedRoute>
+                <KioskLocations />
               </ProtectedRoute>
             } />
             <Route path="/help" element={

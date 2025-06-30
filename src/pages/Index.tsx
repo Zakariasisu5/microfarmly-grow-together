@@ -1,12 +1,23 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { Leaf, Users, Smartphone, Brain, MapPin, Bell, Zap, Shield, Globe } from 'lucide-react';
 
 const Index = () => {
+  const [kioskButtonClicked, setKioskButtonClicked] = useState(false);
+  const navigate = useNavigate();
+
+  const handleStartGrowing = () => {
+    navigate('/subscription');
+  };
+
+  const handleViewKiosks = () => {
+    setKioskButtonClicked(true);
+    navigate('/kiosk-locations');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <Header />
@@ -23,10 +34,23 @@ const Index = () => {
             in cafes, coworking spaces, and urban communities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
+            <Button 
+              size="lg" 
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+              onClick={handleStartGrowing}
+            >
               Start Growing Today
             </Button>
-            <Button size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className={`${
+                kioskButtonClicked 
+                  ? 'bg-green-600 text-white border-green-600 hover:bg-green-700' 
+                  : 'border-green-600 text-green-600 hover:bg-green-50'
+              } px-8 py-3`}
+              onClick={handleViewKiosks}
+            >
               View Kiosk Locations
             </Button>
           </div>
