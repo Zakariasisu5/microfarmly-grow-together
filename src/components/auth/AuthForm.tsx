@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,11 +30,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onToggleMode }) => {
             description: error.message,
             variant: "destructive",
           });
-        } else {
-          toast({
-            title: "Welcome back!",
-            description: "You have successfully signed in.",
-          });
         }
       } else {
         const { error } = await signUp(email, password, fullName);
@@ -48,7 +42,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode, onToggleMode }) => {
         } else {
           toast({
             title: "Account Created!",
-            description: "Please check your email to verify your account.",
+            description: "Your account has been created successfully.",
           });
         }
       }
