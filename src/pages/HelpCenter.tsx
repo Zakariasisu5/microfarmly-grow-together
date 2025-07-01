@@ -1,9 +1,9 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MessageCircle, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import AIChat from "@/components/AIChat";
 
 const HelpCenter = () => {
   return (
@@ -35,7 +35,7 @@ const HelpCenter = () => {
               Need immediate help?
             </CardTitle>
             <CardDescription>
-              Contact our support team for personalized assistance
+              Contact our support team for personalized assistance or chat with our AI assistant
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -141,6 +141,9 @@ const HelpCenter = () => {
           </Card>
         </div>
       </div>
+
+      {/* Add AI Chat Component */}
+      <AIChat />
     </div>
   );
 };

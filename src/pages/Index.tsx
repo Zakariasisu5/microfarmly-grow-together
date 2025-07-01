@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
+import AIChat from '@/components/AIChat';
 import { Leaf, Users, Smartphone, Brain, MapPin, Bell, Zap, Shield, Globe } from 'lucide-react';
 
 const Index = () => {
@@ -286,6 +286,9 @@ const Index = () => {
           <p>&copy; 2024 MicroFarmly. All rights reserved. Built with ❤️ for sustainable urban farming.</p>
         </div>
       </footer>
+
+      {/* Add AI Chat Component */}
+      <AIChat />
     </div>
   );
 };
