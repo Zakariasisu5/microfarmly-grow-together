@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,6 +8,7 @@ import { Leaf, Users, Smartphone, Brain, MapPin, Bell, Zap, Shield, Globe } from
 
 const Index = () => {
   const [kioskButtonClicked, setKioskButtonClicked] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleStartGrowing = () => {
@@ -24,6 +26,21 @@ const Index = () => {
 
   const handleStartSubscription = () => {
     navigate('/subscription');
+  };
+
+  const handleFeatureClick = (feature: string) => {
+    setSelectedFeature(feature);
+    switch (feature) {
+      case 'consumers':
+        navigate('/subscription');
+        break;
+      case 'operators':
+        navigate('/kiosk-locations');
+        break;
+      case 'ai':
+        navigate('/help');
+        break;
+    }
   };
 
   return (
@@ -72,7 +89,12 @@ const Index = () => {
             Grow Together, Eat Fresher
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-green-200 hover:shadow-lg transition-shadow">
+            <Card 
+              className={`border-green-200 hover:shadow-lg transition-all cursor-pointer transform hover:scale-105 ${
+                selectedFeature === 'consumers' ? 'ring-2 ring-green-500 bg-green-50' : ''
+              }`}
+              onClick={() => handleFeatureClick('consumers')}
+            >
               <CardHeader>
                 <div className="flex items-center space-x-3">
                   <Users className="h-8 w-8 text-green-600" />
@@ -80,14 +102,28 @@ const Index = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600">
+                <CardDescription className="text-gray-600 mb-4">
                   Subscribe to fresh microgreens, choose pickup locations, get harvest notifications, 
                   and scan QR codes to claim your produce.
                 </CardDescription>
+                <Button 
+                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/subscription');
+                  }}
+                >
+                  Start Subscription
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-blue-200 hover:shadow-lg transition-shadow">
+            <Card 
+              className={`border-blue-200 hover:shadow-lg transition-all cursor-pointer transform hover:scale-105 ${
+                selectedFeature === 'operators' ? 'ring-2 ring-blue-500 bg-blue-50' : ''
+              }`}
+              onClick={() => handleFeatureClick('operators')}
+            >
               <CardHeader>
                 <div className="flex items-center space-x-3">
                   <Smartphone className="h-8 w-8 text-blue-600" />
@@ -95,14 +131,28 @@ const Index = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600">
+                <CardDescription className="text-gray-600 mb-4">
                   Monitor farming kiosks, view sensor data, control lights and pumps remotely, 
                   and receive AI-powered harvest predictions.
                 </CardDescription>
+                <Button 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/kiosk-locations');
+                  }}
+                >
+                  View Kiosks
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-purple-200 hover:shadow-lg transition-shadow">
+            <Card 
+              className={`border-purple-200 hover:shadow-lg transition-all cursor-pointer transform hover:scale-105 ${
+                selectedFeature === 'ai' ? 'ring-2 ring-purple-500 bg-purple-50' : ''
+              }`}
+              onClick={() => handleFeatureClick('ai')}
+            >
               <CardHeader>
                 <div className="flex items-center space-x-3">
                   <Brain className="h-8 w-8 text-purple-600" />
@@ -110,10 +160,19 @@ const Index = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600">
+                <CardDescription className="text-gray-600 mb-4">
                   Real-time sensor tracking, predictive harvest algorithms, automated alerts, 
                   and IoT integration for optimal growing conditions.
                 </CardDescription>
+                <Button 
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/help');
+                  }}
+                >
+                  Learn More
+                </Button>
               </CardContent>
             </Card>
           </div>
