@@ -4,8 +4,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
 import { Check, Leaf } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Subscription = () => {
+  const { toast } = useToast();
+
+  const handleSubscribe = (plan: string, price: string) => {
+    toast({
+      title: "Subscription Started",
+      description: `You've selected the ${plan} plan for ${price}/week. Redirecting to payment...`,
+    });
+    // Here you would typically integrate with a payment processor like Stripe
+    console.log(`Subscribing to ${plan} plan at ${price}/week`);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <Header />
@@ -31,7 +43,12 @@ const Subscription = () => {
                   <li className="flex items-center"><Check className="h-4 w-4 text-green-600 mr-2" />Weekly harvest notifications</li>
                   <li className="flex items-center"><Check className="h-4 w-4 text-green-600 mr-2" />1 pickup location</li>
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Get Started</Button>
+                <Button 
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  onClick={() => handleSubscribe('Starter', '$15')}
+                >
+                  Get Started
+                </Button>
               </CardContent>
             </Card>
 
@@ -48,7 +65,12 @@ const Subscription = () => {
                   <li className="flex items-center"><Check className="h-4 w-4 text-green-600 mr-2" />3 pickup locations</li>
                   <li className="flex items-center"><Check className="h-4 w-4 text-green-600 mr-2" />Priority notifications</li>
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Get Started</Button>
+                <Button 
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  onClick={() => handleSubscribe('Family', '$35')}
+                >
+                  Get Started
+                </Button>
               </CardContent>
             </Card>
 
@@ -65,7 +87,12 @@ const Subscription = () => {
                   <li className="flex items-center"><Check className="h-4 w-4 text-green-600 mr-2" />Unlimited pickup locations</li>
                   <li className="flex items-center"><Check className="h-4 w-4 text-green-600 mr-2" />Custom growing requests</li>
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Get Started</Button>
+                <Button 
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  onClick={() => handleSubscribe('Community', '$75')}
+                >
+                  Get Started
+                </Button>
               </CardContent>
             </Card>
           </div>
